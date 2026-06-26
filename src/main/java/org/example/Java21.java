@@ -37,8 +37,7 @@ public class Java21 {
         // 大量生成も余裕（100万スレッドも可能）
         try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
             for (int i = 0; i < 1_000_000; i++) {
-                executor.submit(
-                        () -> {
+                executor.submit(() -> {
                             Thread.sleep(Duration.ofSeconds(1));
                             return "done";
                         });
