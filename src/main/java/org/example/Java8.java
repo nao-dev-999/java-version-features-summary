@@ -8,10 +8,7 @@ import java.util.Optional;
 import java.util.function.*;
 
 /**
- * Java 8 (2014) ラムダ式の導入 Stream APIの導入 Optionalクラスの導入
- * java.util.functionパッケージの導入
- * java.timeパッケージの導入
- *
+ * Java 8 (2014) ラムダ式の導入 Stream APIの導入 Optionalクラスの導入 java.util.functionパッケージの導入 java.timeパッケージの導入
  */
 public class Java8 {
 
@@ -49,8 +46,8 @@ public class Java8 {
         Predicate<String> isEmpty = String::isEmpty;
         Predicate<Integer> isEven = n -> n % 2 == 0;
 
-        isEmpty.test("");   // true
-        isEven.test(4);     // true
+        isEmpty.test(""); // true
+        isEven.test(4); // true
 
         // BiFunction<T, U, R>：T と U を受け取り R を返す
         BiFunction<String, Integer, String> repeat = String::repeat;
@@ -59,8 +56,7 @@ public class Java8 {
         concat.apply("Hello", " World"); // "Hello World"
 
         // BiConsumer<T, U>：T と U を受け取り何も返さない
-        BiConsumer<String, Integer> biPrint = (s, n) ->
-                System.out.println(s + ": " + n);
+        BiConsumer<String, Integer> biPrint = (s, n) -> System.out.println(s + ": " + n);
         biPrint.accept("年齢", 30); // 年齢: 30
 
         // BiPredicate<T, U>：T と U を受け取り boolean を返す
@@ -101,7 +97,7 @@ public class Java8 {
         Instant epoch = Instant.EPOCH; // 1970-01-01T00:00:00Z
 
         instant.getEpochSecond(); // Unix時間（秒）
-        instant.toEpochMilli();   // Unix時間（ミリ秒）
+        instant.toEpochMilli(); // Unix時間（ミリ秒）
 
         // Instantから変換
         ZonedDateTime zonedDateTime = instant.atZone(ZoneId.of("Asia/Tokyo"));
@@ -115,58 +111,57 @@ public class Java8 {
         // 本番
         LocalDate prod = LocalDate.now(Clock.systemDefaultZone());
         // テスト（固定時刻）
-        LocalDate test = LocalDate.now(
-                Clock.fixed(Instant.parse("2024-06-01T00:00:00Z"),
-                        ZoneId.of("Asia/Tokyo")));
+        LocalDate test =
+                LocalDate.now(
+                        Clock.fixed(
+                                Instant.parse("2024-06-01T00:00:00Z"), ZoneId.of("Asia/Tokyo")));
 
         LocalDate date = LocalDate.of(2024, 1, 15); // 2024-01-15
         LocalDate date2 = LocalDate.parse("2024-01-15"); // 文字列から
 
         // 情報取得
-        date.getYear();       // 2024
-        date.getMonth();      // JANUARY
+        date.getYear(); // 2024
+        date.getMonth(); // JANUARY
         date.getMonthValue(); // 1
         date.getDayOfMonth(); // 15
-        date.getDayOfWeek();  // MONDAY
+        date.getDayOfWeek(); // MONDAY
         date.lengthOfMonth(); // 31（その月の日数）
-        date.isLeapYear();    // false（うるう年か）
+        date.isLeapYear(); // false（うるう年か）
 
         // 加減算（イミュータブル：元のオブジェクトは変わらない）
-        date.plusDays(10);    // 2024-01-25
-        date.plusMonths(2);   // 2024-03-15
-        date.plusYears(1);    // 2025-01-15
-        date.minusDays(5);    // 2024-01-10
+        date.plusDays(10); // 2024-01-25
+        date.plusMonths(2); // 2024-03-15
+        date.plusYears(1); // 2025-01-15
+        date.minusDays(5); // 2024-01-10
 
         // 比較
         LocalDate d1 = LocalDate.of(2024, 1, 1);
         LocalDate d2 = LocalDate.of(2024, 6, 1);
-        d1.isBefore(d2);    // true
-        d1.isAfter(d2);     // false
-        d1.isEqual(d2);     // false
+        d1.isBefore(d2); // true
+        d1.isAfter(d2); // false
+        d1.isEqual(d2); // false
 
         // 生成
         LocalTime now = LocalTime.now();
-        LocalTime time = LocalTime.of(14, 30, 0);      // 14:30:00
+        LocalTime time = LocalTime.of(14, 30, 0); // 14:30:00
         LocalTime time2 = LocalTime.parse("14:30:00");
 
         // 情報取得
-        time.getHour();   // 14
+        time.getHour(); // 14
         time.getMinute(); // 30
         time.getSecond(); // 0
-        time.getNano();   // 0
+        time.getNano(); // 0
 
         // 加減算
-        time.plusHours(2);    // 16:30:00
+        time.plusHours(2); // 16:30:00
         time.plusMinutes(45); // 15:15:00
-        time.minusHours(1);   // 13:30:00
+        time.minusHours(1); // 13:30:00
 
         // 生成
         LocalDateTime datetime1 = LocalDateTime.now();
         LocalDateTime datetime2 = LocalDateTime.of(2024, 1, 15, 14, 30, 0);
-        LocalDateTime datetime3 = LocalDateTime.of(
-                LocalDate.of(2024, 1, 15),
-                LocalTime.of(14, 30, 0)
-        );
+        LocalDateTime datetime3 =
+                LocalDateTime.of(LocalDate.of(2024, 1, 15), LocalTime.of(14, 30, 0));
 
         // LocalDate / LocalTime に分解
         LocalDate localdate = datetime2.toLocalDate(); // 2024-01-15
@@ -201,9 +196,9 @@ public class Java8 {
         LocalDate end = LocalDate.of(2024, 6, 15);
 
         Period period = Period.between(start, end);
-        period.getYears();  // 4
+        period.getYears(); // 4
         period.getMonths(); // 5
-        period.getDays();   // 14
+        period.getDays(); // 14
 
         // 生成
         Period threeMonths = Period.ofMonths(3);
@@ -215,7 +210,7 @@ public class Java8 {
         LocalTime t2 = LocalTime.of(17, 30);
 
         Duration duration = Duration.between(t1, t2);
-        duration.toHours();   // 8
+        duration.toHours(); // 8
         duration.toMinutes(); // 510
 
         // 生成

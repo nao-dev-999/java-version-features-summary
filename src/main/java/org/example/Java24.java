@@ -1,13 +1,9 @@
 package org.example;
 
-import java.util.List;
 import java.util.stream.Gatherers;
 import java.util.stream.Stream;
 
-/**
- * Java 24 (2024)
- * Stream中間操作の拡張
- */
+/** Java 24 (2024) Stream中間操作の拡張 */
 public class Java24 {
 
     static void main(String[] args) {

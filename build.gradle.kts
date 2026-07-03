@@ -29,7 +29,7 @@ tasks.test {
 spotless {
     java {
         // Google Java Format でコード整形
-        googleJavaFormat("1.28.0").aosp()
+        googleJavaFormat("1.35.0").aosp()
         // import を自動削除
         removeUnusedImports()
         // 末尾空白を削除

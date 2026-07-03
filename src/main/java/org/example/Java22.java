@@ -3,10 +3,7 @@ package org.example;
 import java.util.List;
 import java.util.stream.Stream;
 
-/**
- * Java 22 (2024)
- * 新しい機能の追加
- */
+/** Java 22 (2024) 新しい機能の追加 */
 public class Java22 {
 
     static void main(String[] args) {
